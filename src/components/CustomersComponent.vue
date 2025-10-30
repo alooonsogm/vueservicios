@@ -3,8 +3,8 @@
         <h1>Customers Api</h1>
         <form>
             <label>ID Customers: </label>
-            <input type="text" v-model="idCustomers"/>
-            <button @click.prevent="buscarCustomers">Buscar Customers</button>
+            <input type="text" v-model="idCustomers" class="form-control"/>
+            <button @click.prevent="buscarCustomers" class="btn btn-dark">Buscar Customers</button>
         </form>
         <div v-if="elCustomer != null">
             <h1>{{ elCustomer.ContactName }}</h1>
@@ -13,7 +13,7 @@
             <p>{{ elCustomer.Country }}</p>
             <p>{{ elCustomer.Phone }}</p>
         </div>
-        <table border="1">
+        <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>

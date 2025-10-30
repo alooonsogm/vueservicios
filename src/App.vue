@@ -1,16 +1,20 @@
 <template>
-  <CustomersComponent/>
+  <MenuComponent/>
 </template>
 
 <script>
 //import CochesComponent from './components/CochesComponent.vue';
-import CustomersComponent from './components/CustomersComponent.vue';
+//import CustomersComponent from './components/CustomersComponent.vue';
+//import EmpleadoDetails from './components/EmpleadoDetails.vue';
+import MenuComponent from './components/MenuComponent.vue';
 
 export default {
   name: 'App',
   components: {
     //CochesComponent,
-    CustomersComponent
+    //CustomersComponent,
+    //EmpleadoDetails,
+    MenuComponent
   }
 }
 </script>
