@@ -18,9 +18,8 @@
 </template>
 
 <script>
-import axios from 'axios';
-import Global from '../Global';
-var apiEmpleados = Global.apiEmpleados;
+import ServiceEmpleados from './../services/ServiceEmpleados'
+const service = new ServiceEmpleados();
 
     export default {
         name: "EmpleadoDetails",
@@ -32,18 +31,14 @@ var apiEmpleados = Global.apiEmpleados;
             }
         },
         mounted(){
-            var request = "api/Empleados";
-            axios.get(apiEmpleados + request).then(response => {
-                console.log("Leyendo empleados.")
-                this.empleados = response.data
+            service.getEmpleados().then(result => {
+                this.empleados = result;
             })
         },
         methods: {
             buscarEmpleado(){
-                var request = "api/Empleados/" + this.idEmpleado;
-                axios.get(apiEmpleados + request).then(response => {
-                    console.log("Leyendo el empleado.")
-                    this.elEmpleado = response.data
+                service.buscarEmpleado(this.idEmpleado).then(result => {
+                    this.elEmpleado = result;
                 })
             }
         }

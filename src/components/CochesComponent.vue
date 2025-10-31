@@ -10,10 +10,8 @@
 </template>
 
 <script>
-import axios from 'axios';
-import Global from '../Global';
-//Si necesitamos variable pra todo el component y sus metodos se declaran aqui (mounted, methods, create)
-var urlCoches = Global.urlCoches;
+import ServiceCoches from './../services/ServiceCoche'
+const service = new ServiceCoches();
     export default {
         name: "CochesComponent",
         data(){
@@ -22,11 +20,9 @@ var urlCoches = Global.urlCoches;
             }
         },
         mounted(){
-            var request = "/webresources/coches";
-            //Las variables fuera del export mo usan this.
-            axios.get(urlCoches + request).then(response => {
-                console.log("Leyendo coches.")
-                this.coches = response.data
+            //Una promesa no es un metodo, es un objeto
+            service.getCoches().then(result => {
+                this.coches = result;
             })
         }
     }

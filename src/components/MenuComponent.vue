@@ -19,6 +19,14 @@
         <li class="nav-item">
           <router-link class="nav-link" to="/coches">Coches</router-link>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Oficios empleados
+          </a>
+          <ul class="dropdown-menu">
+            <li v-for="oficio in oficios" :key="oficio"><router-link class="nav-link" :to="'/empleadosoficio/' + oficio" >{{oficio}}</router-link></li>
+          </ul>
+        </li>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
@@ -30,8 +38,21 @@
 </template>
 
 <script>
+import ServiceEmpleados from './../services/ServiceEmpleados'
+const service = new ServiceEmpleados();
+
     export default {
-        name: "MenuComponent"
+        name: "MenuComponent",
+        data(){
+          return{
+            oficios: []
+          }
+        },
+        mounted() {
+          service.getOficios().then(result => {
+                this.oficios = result;
+          })
+        }
     }
 </script>
 
